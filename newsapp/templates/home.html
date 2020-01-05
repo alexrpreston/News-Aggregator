@@ -1,0 +1,38 @@
+
+<!DOCTYPE html> 
+<html lang="en" dir="ltr"> 
+  <head>
+        <link rel="stylesheet" href="style.css">       
+    <meta charset="utf-8"> 
+    <title></title> 
+  
+    
+<!-- Optional theme -->
+  </head> 
+  <body> 
+    <div class="jumbotron" <style="color:black"> 
+  
+      <h1 <style ="color:white"> 
+   Get The latest news on our website 
+  
+    </div> 
+  
+    <div class="row">
+        <div class="column"> 
+            {% for new, des, i in mylist %} 
+                    <img src="{{ i }}" alt=""> 
+                    <h1>news:</h1> {{ new }} 
+                    {{ value|linebreaks }} 
+        
+                    <h4>description:</h4>{{ des }} 
+                    {{ value|linebreaks }} 
+            {% endfor %}
+            
+        </div>
+        <div class="column">
+             
+        </div>
+    </div>
+  
+  </body> 
+</html> 

@@ -13,7 +13,7 @@ from newsapi import NewsApiClient
 def home(request): 
       
     newsapi = NewsApiClient(api_key ='7890f99f817b40a0a587325193ca0933') 
-    top = newsapi.get_top_headlines(sources ='techcrunch') 
+    top = newsapi.get_top_headlines(sources ='business-insider') 
   
     l = top['articles'] 
     desc =[] 

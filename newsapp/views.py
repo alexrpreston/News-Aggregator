@@ -9,11 +9,12 @@ from django.http import HttpResponse
 
 
 # importing api 
+
   
 # Create your views here.  
 def home(request): 
     newsapi = NewsApiClient(api_key ='7890f99f817b40a0a587325193ca0933') 
-    top = newsapi.get_top_headlines(sources ='business-insider') 
+    top = newsapi.get_top_headlines(sources ='techcrunch') 
   
     l = top['articles'] 
     desc =[] 

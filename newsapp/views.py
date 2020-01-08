@@ -1,17 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render 
+from newsapi import NewsApiClient 
+from django.template import loader
+from django.http import HttpResponse
 
 #def home(request):
-#    return render(request, 'home.html')
+#   return HttpResponse("Hello, world. You're at the polls index.")
 
 
 
 # importing api 
-from django.shortcuts import render 
-from newsapi import NewsApiClient 
+
   
 # Create your views here.  
 def home(request): 
-      
     newsapi = NewsApiClient(api_key ='7890f99f817b40a0a587325193ca0933') 
     top = newsapi.get_top_headlines(sources ='business-insider') 
   
@@ -26,5 +27,7 @@ def home(request):
         desc.append(f['description']) 
         img.append(f['urlToImage']) 
     mylist = zip(news, desc, img) 
-  
-    return render(request, 'home.html', context ={"mylist":mylist}) 
+    
+    #return HttpResponse(template.render(context, request))
+    #return HttpResponse(template.render(context ={"mylist":mylist}, request))
+    return render(request, 'newsapp/home.html', context ={"mylist":mylist}) 

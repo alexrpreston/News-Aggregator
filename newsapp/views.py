@@ -30,4 +30,4 @@ def home(request):
     
     #return HttpResponse(template.render(context, request))
     #return HttpResponse(template.render(context ={"mylist":mylist}, request))
-    return render(request, 'newsapp/home.html', context ={"mylist":mylist}) 
+    return render(request, 'home.html', context ={"mylist":mylist}) 

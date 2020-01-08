@@ -9,7 +9,6 @@ from django.http import HttpResponse
 
 
 # importing api 
-
   
 # Create your views here.  
 def home(request): 
@@ -28,6 +27,4 @@ def home(request):
         img.append(f['urlToImage']) 
     mylist = zip(news, desc, img) 
     
-    #return HttpResponse(template.render(context, request))
-    #return HttpResponse(template.render(context ={"mylist":mylist}, request))
-    return render(request, 'home.html', context ={"mylist":mylist}) 
+    return render(request, 'newsapp/home.html', context ={"mylist":mylist}) 

@@ -1,8 +1,9 @@
+{% load static %}
 
 <!DOCTYPE html> 
 <html lang="en" dir="ltr"> 
   <head>
-        <link rel="stylesheet" href="style.css">       
+    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">      
     <meta charset="utf-8"> 
     <title></title> 
   
@@ -19,14 +20,21 @@
   
     <div class="row">
         <div class="column"> 
-            {% for new, des, i in mylist %} 
+            <h1>Tech Crunch</h1>
+            {% for new, des, i in TClist %} 
                     {{ new }} 
                     {{ value|linebreaks }} 
             {% endfor %}
-            
         </div>
         <div class="column">
-             
+          <h1>Wall Street Journal</h1>
+          {% for new, des, i in WSJlist %} 
+                    {{ new }} 
+                    {{ value|linebreaks }} 
+            {% endfor %}
+        </div>
+        <div class="column">
+          <h1>CNBC</h1>
         </div>
     </div>
   

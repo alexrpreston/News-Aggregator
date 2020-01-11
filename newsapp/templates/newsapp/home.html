@@ -15,26 +15,21 @@
   
       <h1 <style ="color:white"> 
    Get The latest news on our website 
-  
+      </h1>
+      <h2>Last Updated: </h2>  
     </div> 
   
     <div class="row">
         <div class="column"> 
-            <h1>Tech Crunch</h1>
+            <h1 style ="color:green">Tech Crunch</h1>
             {% for new, des, i in TClist %} 
                     {{ new }} 
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>
         <div class="column">
-          <h1>Wall Street Journal</h1>
-          {% for new, des, i in WSJlist %} 
-                    {{ new }} 
-                    {{ value|linebreaks }} 
-            {% endfor %}
         </div>
         <div class="column">
-          <h1>CNBC</h1>
         </div>
     </div>
   

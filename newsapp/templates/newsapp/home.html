@@ -16,14 +16,15 @@
       <h1 <style ="color:white"> 
    Get The latest news on our website 
       </h1>
+      <a href="{% url 'techCrunch' %}" class="btn btn-success">Get my morning news</a>
       <h2>Last Updated: </h2>  
     </div> 
   
     <div class="row">
         <div class="column"> 
             <h1 style ="color:green">Tech Crunch</h1>
-            {% for new, des, i in TClist %} 
-                    {{ new }} 
+            {% for object in object_list %} 
+                    {{ object.title }} 
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>

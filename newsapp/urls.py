@@ -1,7 +1,7 @@
+
 from django.urls import path
-
-from . import views
-
+from newsapp.views import techCrunch, news_list
 urlpatterns = [
-    path('', views.techCrunch, name='techCrunch'),
+  path('techCrunch/', techCrunch, name="techCrunch"),
+  path('', news_list, name="home"),
 ]

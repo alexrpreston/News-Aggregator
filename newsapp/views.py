@@ -4,7 +4,7 @@ from django.template import loader
 from django.http import HttpResponse
 from newsapp.models import techCrunchHeadline
 from newsapp.models import lastUpdated
-import time
+import time, os
 #def home(request):
 #   return HttpResponse("Hello, world. You're at the polls index.")
 
@@ -33,8 +33,10 @@ def techCrunch(request):
         new_headline.save()
     
     newTime = lastUpdated()
+    os.environ['TZ'] = 'US/Eastern'
+    time.tzset()
     t = time.localtime()
-    newTime.time = time.strftime("%I:%M %p" , t)
+    newTime.time = time.strftime("%I:%M %p %Z" , t)
     newTime.save()
     return redirect("../")
 

@@ -7,3 +7,9 @@ class techCrunchHeadline(models.Model):
 
     def __str__(self):
         return self.title
+
+class lastUpdated(models.Model):
+    time = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.time

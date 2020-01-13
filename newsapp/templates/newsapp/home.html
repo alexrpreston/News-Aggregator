@@ -18,13 +18,14 @@
       </h1>
       <a href="{% url 'techCrunch' %}" class="btn btn-success">Get my morning news</a>
       <h2>Last Updated: </h2>  
+      {{ update_Time }}
     </div> 
   
     <div class="row">
         <div class="column"> 
             <h1 style ="color:green">Tech Crunch</h1>
-            {% for object in object_list %} 
-                    {{ object.title }} 
+            {% for object in TCobject_list %}
+                    <a href={{ object.url }} target=”_blank”>{{ object.title }} </a>
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>

@@ -8,6 +8,15 @@ class techCrunchHeadline(models.Model):
     def __str__(self):
         return self.title
 
+class wallStreetJournalHeadline(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
+
 class lastUpdated(models.Model):
     time = models.CharField(max_length=60)
 

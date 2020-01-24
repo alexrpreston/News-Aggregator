@@ -16,7 +16,7 @@
       <h1 <style ="color:white"> 
    Get The latest news on our website 
       </h1>
-      <a href="{% url 'techCrunch' %}" class="btn btn-success">Get my morning news</a>
+      <a href="{% url 'wallStreetJournal' %}" class="btn btn-success">Get my morning news</a>
       <h2>Last Updated: </h2>  
       {{ update_Time }}
     </div> 
@@ -30,6 +30,11 @@
             {% endfor %}
         </div>
         <div class="column">
+          <h1 style ="color:blue">Wall Street Journal</h1>
+          {% for wsjobject in WSJobject_list %}
+                    <a href={{ object.url }} target=”_blank”>{{ wsjobject.title }} </a>
+                    {{ value|linebreaks }} 
+            {% endfor %}
         </div>
         <div class="column">
         </div>

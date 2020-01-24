@@ -10,7 +10,13 @@
     
 <!-- Optional theme -->
   </head> 
-  <body> 
+  <body>
+    <div class="outer">
+
+    
+    <div class="inner">
+
+    
     <div class="jumbotron" <style="color:black"> 
   
       <h1 <style ="color:white"> 
@@ -22,10 +28,12 @@
     </div> 
   
     <div class="row">
+      
         <div class="column"> 
-            <h1 style ="color:green">Tech Crunch</h1>
+          <h1 style ="color:green">Tech Crunch</h1>
             {% for object in TCobject_list %}
                     <a href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                    <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>
@@ -33,6 +41,7 @@
           <h1 style ="color:blue">Wall Street Journal</h1>
           {% for wsjobject in WSJobject_list %}
                     <a href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
+                    <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>
@@ -40,10 +49,12 @@
           <h1 style ="color:red">The Verge</h1>
           {% for TVobject in TVobject_list %}
                     <a href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
+                    <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>
     </div>
-  
+  </div> 
+</div>
   </body> 
 </html> 

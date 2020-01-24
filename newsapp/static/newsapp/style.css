@@ -1,3 +1,32 @@
 .row{
-  column-count: 3;
+  
+}
+
+.lineBreaks{
+  border-bottom-style: dashed;
+  border-width: 1px;
+  border-color: grey;
+}
+.column{
+  width: 29%;
+  padding-right: 2%;
+  padding-left: 2%;
+  display: inline-block;
+}
+
+a{
+  text-decoration: none
+}
+
+.inner{
+  margin: 5%;
+  
+  background-color: white;
+  border-color: red;
+  border-width: 10px;
+  border-radius: 5px;
+}
+
+body{
+  background-color: #EAEAEA;
 }

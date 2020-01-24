@@ -32,14 +32,14 @@
         <div class="column">
           <h1 style ="color:blue">Wall Street Journal</h1>
           {% for wsjobject in WSJobject_list %}
-                    <a href={{ object.url }} target=”_blank”>{{ wsjobject.title }} </a>
+                    <a href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>
         <div class="column">
           <h1 style ="color:red">The Verge</h1>
           {% for TVobject in TVobject_list %}
-                    <a href={{ object.url }} target=”_blank”>{{ TVobject.title }} </a>
+                    <a href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>

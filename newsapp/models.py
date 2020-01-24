@@ -15,6 +15,13 @@ class wallStreetJournalHeadline(models.Model):
     def __str__(self):
         return self.title
 
+class theVergeHeadline(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.TextField()
+
+    def __str__(self):
+        return self.title
+
 
 
 class lastUpdated(models.Model):

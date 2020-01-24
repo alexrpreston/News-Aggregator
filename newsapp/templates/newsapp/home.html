@@ -16,7 +16,7 @@
       <h1 <style ="color:white"> 
    Get The latest news on our website 
       </h1>
-      <a href="{% url 'wallStreetJournal' %}" class="btn btn-success">Get my morning news</a>
+      <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
       <h2>Last Updated: </h2>  
       {{ update_Time }}
     </div> 
@@ -37,6 +37,11 @@
             {% endfor %}
         </div>
         <div class="column">
+          <h1 style ="color:red">The Verge</h1>
+          {% for TVobject in TVobject_list %}
+                    <a href={{ object.url }} target=”_blank”>{{ TVobject.title }} </a>
+                    {{ value|linebreaks }} 
+            {% endfor %}
         </div>
     </div>
   

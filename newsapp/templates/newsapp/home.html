@@ -29,33 +29,37 @@
   
     <div class="row">
       
-        <div class="column"> 
-          <h1 style ="color:green">Tech Crunch</h1>
+        <div class="column">
+          <a href="https://techcrunch.com/" target="_blank"><img class="newsLogo" width="66%" src="{% static 'newsapp/techCrunchLogo.png' %}"></a> 
             {% for object in TCobject_list %}
-                    <a href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                    <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>
         <div class="column">
-          <h1 style ="color:blue">Wall Street Journal</h1>
+          <a href="https://www.wsj.com/" target="_blank"><img class="newsLogo" width="66%" src="{% static 'newsapp/wsj-logo-transparent.png' %}"></a> 
+          
           {% for wsjobject in WSJobject_list %}
-                    <a href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
+                    <a class="titles" href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>
         <div class="column">
-          <h1 style ="color:red">The Verge</h1>
+          <a href="https://news.ycombinator.com/" target="_blank"><img class="newsLogo" width="66%" src="{% static 'newsapp/hackerNewsLogo.jpeg' %}"></a> 
           {% for TVobject in TVobject_list %}
-                    <a href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
+                    <a class="titles" href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
         </div>
     </div>
     <footer>
-      <a>About</a> <a href="https://github.com/alexrpreston/News-Aggregator" target="_blank">Github</a> <a>Status</a>
+      <hr class="footerLine">
+      <div class="footerInfo">
+        <a>About</a> <a href="https://github.com/alexrpreston/News-Aggregator" target="_blank">Github</a> <a>Status</a>
+      </div>
     </footer>
   </div> 
 </div>

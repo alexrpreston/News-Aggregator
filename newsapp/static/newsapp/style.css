@@ -2,6 +2,32 @@
   
 }
 
+.footerLine{
+  margin-top: 5%;
+  border-top: 1px solid green;
+  width: 90%;
+}
+
+.footerInfo{
+  padding-left: 5%;
+  padding-bottom: 2%;
+}
+
+@font-face {
+  font-family: lemonMilk;
+  src: url(coolvetica\ rg.ttf);
+}
+
+a.titles{
+  font-family: lemonMilk;
+  font-weight: lighter;
+  color: #696969;
+}
+
+img{
+  align:left;
+}
+
 .newsSubjects{
   text-align: center;
   margin: 1%;
@@ -29,8 +55,8 @@ a{
 
 .inner{
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-
-  margin: 5%;
+  background-color: #FBFBFB;
+  margin: 0% 15% 15% 15%;
   
   background-color: white;
   border-color: red;
@@ -39,5 +65,5 @@ a{
 }
 
 body{
-  background-color: #EAEAEA;
+  background-color: #F1F1F1;
 }

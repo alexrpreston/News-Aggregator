@@ -3,7 +3,8 @@
 <!DOCTYPE html> 
 <html lang="en" dir="ltr"> 
   <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">      
+    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">
+    <script src="{% static 'newsapp/clock.js' %}"></script>   
     <meta charset="utf-8"> 
     <title></title> 
   
@@ -16,21 +17,25 @@
     
     <div class="inner">
 
-    
-    <div class="jumbotron"> 
-      <header>
-        <h1 class="newsSubjects">Finance + Technology News</h1> 
-             <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
-             <h2>Last Updated: </h2>  
-             {{ update_Time }}
-      </header>
-      
-    </div> 
+    <header>
+      <div class="header"> 
+        <header>
+          <h1 class="newsSubjects">Finance + Technology News</h1> 
+               <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
+               <h2>Last Updated: </h2>
+               <h3 id="lastUpdatedTime">{{ update_Time }}</h3>
+               Hello<span class="time"></span>
+               <button onclick="pressMe()">Press me</button>
+        </header>
+        
+      </div>
+    </header>
+     
   
     <div class="row">
       
         <div class="column">
-          <a href="https://techcrunch.com/" target="_blank"><img class="newsLogo" width="66%" src="{% static 'newsapp/techCrunchLogo.png' %}"></a> 
+          <a href="https://techcrunch.com/" target="_blank"><img class="newsLogo" width="100%" src="{% static 'newsapp/techCrunchLogo.png' %}"></a> 
             {% for object in TCobject_list %}
                     <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
                     <h1 class="lineBreaks"></h1>
@@ -38,7 +43,7 @@
             {% endfor %}
         </div>
         <div class="column">
-          <a href="https://www.wsj.com/" target="_blank"><img class="newsLogo" width="66%" src="{% static 'newsapp/wsj-logo-transparent.png' %}"></a> 
+          <a href="https://www.wsj.com/" target="_blank"><img class="newsLogo" width="100%" src="{% static 'newsapp/wsj-logo-transparent.png' %}"></a> 
           
           {% for wsjobject in WSJobject_list %}
                     <a class="titles" href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
@@ -47,7 +52,7 @@
             {% endfor %}
         </div>
         <div class="column">
-          <a href="https://news.ycombinator.com/" target="_blank"><img class="newsLogo" width="66%" src="{% static 'newsapp/hackerNewsLogo.jpeg' %}"></a> 
+          <a href="https://news.ycombinator.com/" target="_blank"><img class="newsLogo" width="100%" src="{% static 'newsapp/hackerNewsLogo.jpeg' %}"></a> 
           {% for TVobject in TVobject_list %}
                     <a class="titles" href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
                     <h1 class="lineBreaks"></h1>
@@ -64,6 +69,6 @@
   </div> 
 </div>
 
-
+  
   </body> 
 </html> 

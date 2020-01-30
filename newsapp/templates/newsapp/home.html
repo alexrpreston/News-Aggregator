@@ -18,24 +18,33 @@
     <div class="inner">
 
     <header>
-      <div class="header"> 
-        <header>
-          <h1 class="newsSubjects">Finance + Technology News</h1> 
-               <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
-               <h2>Last Updated: </h2>
-               <h3 id="lastUpdatedTime">{{ update_Time }}</h3>
-               Hello<span class="time"></span>
-               <button onclick="pressMe()">Press me</button>
-        </header>
+       
         
-      </div>
+          
+          <div class="header">
+            <h2>Last Updated {{ update_Time }}</h2>
+          </div>
+          <div class="header">
+            <h1 class="newsSubjects">Finance + Technology News</h1>
+          </div>
+          <div class="header">
+            <p>Date/Time: <span class="time"></span></p>
+          </div>
+               <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
+               
+               
+
+
+        
+        
+      
     </header>
      
   
     <div class="row">
       
         <div class="column">
-          <a href="https://techcrunch.com/" target="_blank"><img class="newsLogo" width="100%" src="{% static 'newsapp/techCrunchLogo.png' %}"></a> 
+          <a href="https://techcrunch.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/techCrunchLogo.png' %}">TECH CRUNCH</a><br>
             {% for object in TCobject_list %}
                     <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
                     <h1 class="lineBreaks"></h1>
@@ -43,7 +52,7 @@
             {% endfor %}
         </div>
         <div class="column">
-          <a href="https://www.wsj.com/" target="_blank"><img class="newsLogo" width="100%" src="{% static 'newsapp/wsj-logo-transparent.png' %}"></a> 
+          <a href="https://www.wsj.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/wallStreetJournalLogo.png' %}">WALL STREET JOURNAL</a><br>
           
           {% for wsjobject in WSJobject_list %}
                     <a class="titles" href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
@@ -52,7 +61,7 @@
             {% endfor %}
         </div>
         <div class="column">
-          <a href="https://news.ycombinator.com/" target="_blank"><img class="newsLogo" width="100%" src="{% static 'newsapp/hackerNewsLogo.jpeg' %}"></a> 
+          <a href="https://news.ycombinator.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="5%" src="{% static 'newsapp/hackerNewsLogo.jpg' %}">HACKER NEWS</a><br>
           {% for TVobject in TVobject_list %}
                     <a class="titles" href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
                     <h1 class="lineBreaks"></h1>

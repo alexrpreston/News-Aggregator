@@ -1,6 +1,11 @@
 .row{
 }
 
+.header{
+  display: inline-block;
+}
+
+
 .footerLine{
   margin-top: 5%;
   border-top: 1px solid green;
@@ -13,12 +18,24 @@
 }
 
 @font-face {
-  font-family: lemonMilk;
+  font-family: coolvetica;
   src: url(coolvetica\ rg.ttf);
 }
 
-a.titles{
+@font-face {
   font-family: lemonMilk;
+  src: url(LEMONMILK-Medium.otf);
+}
+
+.newsLogoText{
+  font-family: lemonMilk;
+  font-size: 125%;
+  color: #2C86C5;
+}
+
+
+a.titles{
+  font-family: coolvetica;
   font-weight: lighter;
   color: #696969;
 }
@@ -27,7 +44,8 @@ img{
   align:right;
 }
 .newsLogo{
-  padding-bottom: 15%;
+  padding: 1%;
+  vertical-align: middle;
 }
 .newsSubjects{
   text-align: center;

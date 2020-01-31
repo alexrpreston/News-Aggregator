@@ -2,13 +2,33 @@
 }
 
 .header{
-  display: inline-block;
+  display: inline;
 }
 
 
-.footerLine{
+.test{
+  columns: 2;
+}
+
+#dateTime{
+  
+}
+
+.date{
+  text-align: right;
+  vertical-align: middle;
+  padding-left: 50%;
+  padding-right: 5%;
+}
+
+.newsSubjects{
+  vertical-align: middle;
+  text-align: left;
+}
+
+.line{
   margin-top: 5%;
-  border-top: 1px solid green;
+  border-top: 1px solid #EEEEEE;
   width: 90%;
 }
 
@@ -46,18 +66,6 @@ img{
 .newsLogo{
   padding: 1%;
   vertical-align: middle;
-}
-.newsSubjects{
-  text-align: center;
-  margin: 1%;
-}
-
-.header{
-  padding-bottom: 2%;
-}
-
-.newsHeader{
-  text-align: center;
 }
 
 .lineBreaks{

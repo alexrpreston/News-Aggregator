@@ -3,10 +3,12 @@
 <!DOCTYPE html> 
 <html lang="en" dir="ltr"> 
   <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">
-    <script src="{% static 'newsapp/clock.js' %}"></script>   
+    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">   
     <meta charset="utf-8"> 
     <title></title> 
+    
+    
+   
   
     
 <!-- Optional theme -->
@@ -17,28 +19,30 @@
     
     <div class="inner">
 
-    <header>
-       
-        
-          
-          <div class="header">
-            <h2>Last Updated {{ update_Time }}</h2>
-          </div>
-          <div class="header">
-            <h1 class="newsSubjects">Finance + Technology News</h1>
-          </div>
-          <div class="header">
-            <p>Date/Time: <span class="time"></span></p>
-          </div>
-               <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
-               
-               
-
-
-        
-        
+    
+    
+      <header>
+        <h1 class="subjectLine">Finance + Technology News</h1> 
+        <hr class="line">
+      </header>
       
-    </header>
+        <div class="test">
+          <div class="headline header">
+            <h1 class="newsSubjects">Top Stories</h1>
+          </div>
+          <div>
+            <div class="date header">
+              <div id="dateHeader"></div>
+              <div id="dateTime"></div>
+            </div>
+          </div>
+        </div> 
+      
+          
+          <h2>Last Updated {{ update_Time }}</h2>
+               <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
+            
+    
      
   
     <div class="row">
@@ -70,14 +74,47 @@
         </div>
     </div>
     <footer>
-      <hr class="footerLine">
+      <hr class="line">
       <div class="footerInfo">
         <a>About</a> <a href="https://github.com/alexrpreston/News-Aggregator" target="_blank">Github</a> <a>Status</a>
       </div>
     </footer>
-  </div> 
+  </div>
+</div>
 </div>
 
   
   </body> 
+
+
+  <script type="text/javascript">
+    var updateTime = function () {
+      var d = new Date();
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      var daysOfWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+      document.getElementById("dateHeader").innerHTML = daysOfWeek[d.getDay()-1]+", "+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
+      
+      var hours;
+      var timeConvention;
+      if(d.getHours() > 12){
+        hours = d.getHours() - 12
+        timeConvention = "PM";
+      }
+      else{
+        hours = d.getHours();
+        timeConvention = "AM";
+      } 
+
+      var minutes;
+      if(d.getMinutes() < 10)minutes = "0"+d.getMinutes();
+      else minutes = d.getMinutes()
+      var zone = new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]
+      document.getElementById("dateTime").innerHTML = hours+":"+minutes+":"+d.getSeconds()+" "+timeConvention+" "+zone;
+
+
+    };
+  
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
 </html> 

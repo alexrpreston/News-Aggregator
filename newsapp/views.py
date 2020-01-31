@@ -6,6 +6,7 @@ from newsapp.models import techCrunchHeadline
 from newsapp.models import wallStreetJournalHeadline
 from newsapp.models import theVergeHeadline
 from newsapp.models import lastUpdated
+from datetime import timedelta
 import time, os
 #def home(request):
 #   return HttpResponse("Hello, world. You're at the polls index.")
@@ -65,6 +66,7 @@ def baseScrape(request):
     time.tzset()
     t = time.localtime()
     newTime.time = time.strftime("%I:%M %p %Z" , t)
+    
     newTime.save()
     return redirect("../")
 

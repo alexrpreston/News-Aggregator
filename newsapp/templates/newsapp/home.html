@@ -29,6 +29,7 @@
         <div class="test">
           <div class="headline header">
             <h1 class="newsSubjects">Top Stories</h1>
+            <h2 class="updateText">Last Updated {{ update_Time }}</h2>
           </div>
           <div>
             <div class="date header">
@@ -36,10 +37,14 @@
               <div id="dateTime"></div>
             </div>
           </div>
+          
+        </div> 
+        <div>
+          
         </div> 
       
+         
           
-          <h2>Last Updated {{ update_Time }}</h2>
                <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
             
     
@@ -80,6 +85,7 @@
       </div>
     </footer>
   </div>
+</div>>
 </div>
 </div>
 

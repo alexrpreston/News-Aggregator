@@ -5,20 +5,30 @@
   display: inline;
 }
 
+.headline{
+  display: flex;
+}
+
+.updateText{
+  
+  font-size: 80%;
+}
 
 .test{
   columns: 2;
 }
 
 #dateTime{
-  
+  position: relative;
+  left: 2.5%;
 }
 
 .date{
-  text-align: right;
+  position: relative;
+  left: 65%;
   vertical-align: middle;
-  padding-left: 50%;
-  padding-right: 5%;
+  margin-right: 50%;
+  
 }
 
 .newsSubjects{

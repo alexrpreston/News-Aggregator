@@ -62,10 +62,11 @@ def baseScrape(request):
         new_headline.save()
 
     newTime = lastUpdated()
-    os.environ['TZ'] = 'US/Eastern'
+    os.environ['UTC'] = 'US/Eastern'
     time.tzset()
     t = time.localtime()
-    newTime.time = time.strftime("%I:%M %p %Z" , t)
+    newTime.hours = time.strftime("%I" , t)
+    newTime.minutes = time.strftime("%M" , t)
     
     newTime.save()
     return redirect("../")
@@ -74,18 +75,31 @@ def baseScrape(request):
 def news_list(request):
     TCheadlines = techCrunchHeadline.objects.all()[::-1]
     WSJHeadLines = wallStreetJournalHeadline.objects.all()[::-1]
-    TVHeadlLines = theVergeHeadline.objects.all()[::-1]
-    timeOfUpdate = lastUpdated.objects.all()[0]
+    TVHeadlLines = theVergeHeadline.objects.all()[::-1]   
+    #timeOfUpdate = 10
     context = {
         'TCobject_list': TCheadlines,
         'WSJobject_list' : WSJHeadLines,
         'TVobject_list' : TVHeadlLines,
-        'update_Time' : timeOfUpdate,
+        
     }
     return render(request, "newsapp/home.html", context)
 
-def updater(request):
-    starttime=time.time()
-    while True:
-        techCrunch(request)
-        time.sleep(60.0 - ((time.time() - starttime) % 60.0))
+def timeSince(request):
+    minutes = 10
+
+    os.environ['UTC'] = 'US/Eastern'
+    time.tzset()
+    t = time.localtime()
+    currentMinutes = int(time.strftime("%M" , t))
+
+    minutesSinceUpdate = 0
+    if minutes > currentMinutes:
+        minutesSinceUpdate = (60 - minutes) + currentMinutes
+    else:
+        minutesSinceUpdate = currentMinutes - minutes
+
+    context = {
+        'minutes_since_update' : minutesSinceUpdate 
+    }
+    return render(request, "newsapp/lastUpdated.html", context)

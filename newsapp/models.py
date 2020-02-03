@@ -25,7 +25,6 @@ class theVergeHeadline(models.Model):
 
 
 class lastUpdated(models.Model):
-    time = models.CharField(max_length=60)
-
+    minutes = models.CharField(max_length=60)
     def __str__(self):
-        return self.time
+        return self.minutes

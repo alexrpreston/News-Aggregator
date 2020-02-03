@@ -29,7 +29,7 @@
         <div class="test">
           <div class="headline header">
             <h1 class="newsSubjects">Top Stories</h1>
-            <h2 class="updateText">Last Updated {{ update_Time }}</h2>
+            <h2 class="updateText">Last Updated </h2>
           </div>
           <div>
             <div class="date header">
@@ -40,14 +40,14 @@
           
         </div> 
         <div>
-          
+          {% block content %}
+          {% endblock %}
         </div> 
       
          
           
                <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
             
-    
      
   
     <div class="row">
@@ -97,8 +97,8 @@
     var updateTime = function () {
       var d = new Date();
       var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      var daysOfWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-      document.getElementById("dateHeader").innerHTML = daysOfWeek[d.getDay()-1]+", "+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
+      var daysOfWeek = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      document.getElementById("dateHeader").innerHTML = daysOfWeek[d.getDay()]+", "+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
       
       var hours;
       var timeConvention;
@@ -118,9 +118,13 @@
       document.getElementById("dateTime").innerHTML = hours+":"+minutes+":"+d.getSeconds()+" "+timeConvention+" "+zone;
 
 
+      
+
     };
   
     updateTime();
     setInterval(updateTime, 1000);
+
+    
   </script>
 </html> 

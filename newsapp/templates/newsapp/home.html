@@ -3,7 +3,10 @@
 <!DOCTYPE html> 
 <html lang="en" dir="ltr"> 
   <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">   
+    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
+   
     <meta charset="utf-8"> 
     <title></title> 
     
@@ -29,7 +32,6 @@
         <div class="test">
           <div class="headline header">
             <h1 class="newsSubjects">Top Stories</h1>
-            <h2 class="updateText">Last Updated </h2>
           </div>
           <div>
             <div class="date header">
@@ -41,13 +43,15 @@
         </div> 
         <div>
           {% block content %}
+            
           {% endblock %}
         </div> 
+        
       
          
           
-               <a href="{% url 'baseScrape' %}" class="btn btn-success">Get my morning news</a>
-            
+               <a href="{% url 'baseScrape' %}" class="btn btn-success">press</a>
+
      
   
     <div class="row">
@@ -55,7 +59,10 @@
         <div class="column">
           <a href="https://techcrunch.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/techCrunchLogo.png' %}">TECH CRUNCH</a><br>
             {% for object in TCobject_list %}
-                    <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                    <div class="tooltip">
+                      <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                      <span class="titleText">{{ object.desc }}</span>
+                    </div>
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
@@ -64,7 +71,10 @@
           <a href="https://www.wsj.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/wallStreetJournalLogo.png' %}">WALL STREET JOURNAL</a><br>
           
           {% for wsjobject in WSJobject_list %}
-                    <a class="titles" href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
+                <div class="tooltip">
+                  <a class="titles" href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
+                  <span class="titleText">{{ wsjobject.desc }}</span>
+                </div>
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
@@ -72,7 +82,10 @@
         <div class="column">
           <a href="https://news.ycombinator.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="5%" src="{% static 'newsapp/hackerNewsLogo.jpg' %}">HACKER NEWS</a><br>
           {% for TVobject in TVobject_list %}
-                    <a class="titles" href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
+                <div class="tooltip">
+                  <a class="titles" href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
+                  <span class="titleText">{{ TVobject.desc }}</span>
+                </div>
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
@@ -112,10 +125,13 @@
       } 
 
       var minutes;
+      var seconds;
       if(d.getMinutes() < 10)minutes = "0"+d.getMinutes();
-      else minutes = d.getMinutes()
+      else minutes = d.getMinutes();
+      if(d.getSeconds() < 10)seconds = "0"+d.getSeconds();
+      else seconds = d.getSeconds()
       var zone = new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]
-      document.getElementById("dateTime").innerHTML = hours+":"+minutes+":"+d.getSeconds()+" "+timeConvention+" "+zone;
+      document.getElementById("dateTime").innerHTML = hours+":"+minutes+":"+seconds+" "+timeConvention+" "+zone;
 
 
       

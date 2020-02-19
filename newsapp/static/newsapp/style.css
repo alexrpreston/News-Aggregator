@@ -1,3 +1,37 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .titleText{
+  visibility: hidden;
+  width: 80%;
+  background-color: #FFFAEE;
+  color: #696969;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 3px;
+  border-color: #fff5cc;
+  border-style: solid;
+  border-width: 0.5px;
+
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  margin-left: -120px;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+
+
+.tooltip:hover .titleText{
+  visibility: visible;
+  opacity: 1; 
+}
+
 .row{
 }
 
@@ -31,7 +65,14 @@
   
 }
 
+.subjectLine{
+  font-family: 'Squada One', cursive;
+  padding-left: 1.5%;
+}
+
 .newsSubjects{
+  font-family: 'Odibee Sans', cursive;
+  padding-left: 3%;
   vertical-align: middle;
   text-align: left;
 }
@@ -66,6 +107,7 @@
 
 a.titles{
   font-family: coolvetica;
+  font-size: 110%;
   font-weight: lighter;
   color: #696969;
 }
@@ -96,7 +138,7 @@ a{
 }
 
 .inner{
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
   background-color: #FFFFFF;
   margin: 0% 15% 15% 15%;
   

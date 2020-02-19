@@ -17,8 +17,9 @@ def baseScrape(request):
     wallStreetJournalHeadline.objects.all().delete() 
     theVergeHeadline.objects.all().delete() 
     
-    lastUpdated.objects.all().delete() 
-    newsapi = NewsApiClient(api_key ='7890f99f817b40a0a587325193ca0933') 
+    lastUpdated.objects.all().delete()
+    KEY = os.getenv('NEWS_API_KEY')
+    newsapi = NewsApiClient(api_key = KEY) 
     top = newsapi.get_top_headlines(sources ='techcrunch') 
   
     l = top['articles'] 
@@ -31,6 +32,7 @@ def baseScrape(request):
         new_headline = techCrunchHeadline()
         new_headline.title = f['title']
         new_headline.url = f['url']
+        new_headline.desc = f['description']
         new_headline.save()
     
     WSJtop = newsapi.get_top_headlines(sources ='the-wall-street-journal') 
@@ -44,6 +46,7 @@ def baseScrape(request):
         f = wsjl[i] 
         new_headline = wallStreetJournalHeadline()
         new_headline.title = f['title']
+        new_headline.desc = f['description']
         new_headline.url = f['url']
         new_headline.save()
 
@@ -58,6 +61,7 @@ def baseScrape(request):
         f = tvjl[i] 
         new_headline = theVergeHeadline()
         new_headline.title = f['title']
+        new_headline.desc = f['description']
         new_headline.url = f['url']
         new_headline.save()
 

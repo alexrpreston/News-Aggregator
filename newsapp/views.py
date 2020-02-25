@@ -12,6 +12,10 @@ import time, os
 #   return HttpResponse("Hello, world. You're at the polls index.")
 
 # Create your views here.  
+
+def about(request):
+    return render(request, "newsapp/about.html")
+
 def baseScrape(request):
     techCrunchHeadline.objects.all().delete() 
     wallStreetJournalHeadline.objects.all().delete() 
@@ -77,14 +81,21 @@ def baseScrape(request):
 
 
 def news_list(request):
-    TCheadlines = techCrunchHeadline.objects.all()[::-1]
-    WSJHeadLines = wallStreetJournalHeadline.objects.all()[::-1]
-    TVHeadlLines = theVergeHeadline.objects.all()[::-1]   
+    TCheadlinesShort = techCrunchHeadline.objects.all()[:5]
+    WSJHeadLinesShort = wallStreetJournalHeadline.objects.all()[:5]
+    TVHeadlLinesShort = theVergeHeadline.objects.all()[:5]   
+    TCheadlinesFull = techCrunchHeadline.objects.all()[5:]
+    WSJHeadLinesFull = wallStreetJournalHeadline.objects.all()[5:]
+    TVHeadlLinesFull = theVergeHeadline.objects.all()[5:]   
+    
     #timeOfUpdate = 10
     context = {
-        'TCobject_list': TCheadlines,
-        'WSJobject_list' : WSJHeadLines,
-        'TVobject_list' : TVHeadlLines,
+        'TCobject_listHalf': TCheadlinesShort,
+        'WSJobject_listHalf' : WSJHeadLinesShort,
+        'TVobject_listHalf' : TVHeadlLinesShort,
+        'TCobject_listRest': TCheadlinesFull,
+        'WSJobject_listRest' : WSJHeadLinesFull,
+        'TVobject_listRest' : TVHeadlLinesFull,
         
     }
     return render(request, "newsapp/home.html", context)

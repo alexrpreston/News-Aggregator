@@ -3,6 +3,10 @@
   display: inline-block;
 }
 
+#more{
+  display: none;
+}
+
 .tooltip .titleText{
   visibility: hidden;
   width: 80%;
@@ -25,7 +29,9 @@
   transition: opacity 0.3s;
 }
 
+.dateHeader{
 
+}
 
 .tooltip:hover .titleText{
   visibility: visible;
@@ -54,12 +60,12 @@
 
 #dateTime{
   position: relative;
-  left: 2.5%;
+  left: 7.5%;
 }
 
 .date{
   position: relative;
-  left: 65%;
+  left: 55%;
   vertical-align: middle;
   margin-right: 50%;
   
@@ -141,6 +147,18 @@ a{
   box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
   background-color: #FFFFFF;
   margin: 0% 15% 15% 15%;
+  
+  background-color: white;
+  border-style: solid;
+  border-width: .03em;
+  border-color: #E9E9E9;
+  border-radius: 5px;
+}
+
+.aboutInner{
+  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+  background-color: blue;
+  margin: 0% 15% 100px 15%;
   
   background-color: white;
   border-style: solid;

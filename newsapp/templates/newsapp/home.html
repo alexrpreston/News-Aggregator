@@ -50,7 +50,7 @@
       
          
           
-               <a href="{% url 'baseScrape' %}" class="btn btn-success">press</a>
+               <a href="{% url 'baseScrape' %}" class="btn btn-success">update</a>
 
      
   
@@ -58,7 +58,7 @@
       
         <div class="column">
           <a href="https://techcrunch.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/techCrunchLogo.png' %}">TECH CRUNCH</a><br>
-            {% for object in TCobject_list %}
+            {% for object in TCobject_listHalf %}
                     <div class="tooltip">
                       <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
                       <span class="titleText">{{ object.desc }}</span>
@@ -66,11 +66,22 @@
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
+            <span id="more">
+              {% for object in TCobject_listRest %}
+              <div class="tooltip">
+                <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                <span class="titleText">{{ object.desc }}</span>
+              </div>
+              <h1 class="lineBreaks"></h1>
+              {{ value|linebreaks }} 
+            {% endfor %} 
+            </span>
+            <button onclick="showMoreTC()" id="myTCButton">View More</button>
         </div>
         <div class="column">
           <a href="https://www.wsj.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/wallStreetJournalLogo.png' %}">WALL STREET JOURNAL</a><br>
           
-          {% for wsjobject in WSJobject_list %}
+          {% for wsjobject in WSJobject_listHalf %}
                 <div class="tooltip">
                   <a class="titles" href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
                   <span class="titleText">{{ wsjobject.desc }}</span>
@@ -78,10 +89,21 @@
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
+            <span id="more">
+              {% for object in WSJobject_listRest %}
+              <div class="tooltip">
+                <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                <span class="titleText">{{ object.desc }}</span>
+              </div>
+              <h1 class="lineBreaks"></h1>
+              {{ value|linebreaks }} 
+            {% endfor %} 
+            </span>
+            <button onclick="showMoreWSJ()" id="myWSJButton">View More</button>
         </div>
         <div class="column">
           <a href="https://news.ycombinator.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="5%" src="{% static 'newsapp/hackerNewsLogo.jpg' %}">HACKER NEWS</a><br>
-          {% for TVobject in TVobject_list %}
+          {% for TVobject in TVobject_listHalf %}
                 <div class="tooltip">
                   <a class="titles" href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
                   <span class="titleText">{{ TVobject.desc }}</span>
@@ -89,12 +111,23 @@
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
+            <span id="more">
+              {% for object in TVobject_listRest %}
+              <div class="tooltip">
+                <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                <span class="titleText">{{ object.desc }}</span>
+              </div>
+              <h1 class="lineBreaks"></h1>
+              {{ value|linebreaks }} 
+            {% endfor %} 
+            </span>
+            <button onclick="showMoreYC()" id="myYCButton">View More</button>
         </div>
     </div>
     <footer>
       <hr class="line">
       <div class="footerInfo">
-        <a>About</a> <a href="https://github.com/alexrpreston/News-Aggregator" target="_blank">Github</a> <a>Status</a>
+        <a href="{% url 'about' %}" target="_self">About</a> <a href="https://github.com/alexrpreston/News-Aggregator" target="_blank">Github</a> <a>Status</a>
       </div>
     </footer>
   </div>
@@ -141,6 +174,48 @@
     updateTime();
     setInterval(updateTime, 1000);
 
+
+    function showMoreTC() {
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myTCButton");
+
+    if (btnText.innerHTML == "View less") {
+      btnText.innerHTML = "View more";
+      moreText.style.display = "none";
+    } 
+    else {
+      btnText.innerHTML = "View less";
+      moreText.style.display = "inline";
+    }
+    }
+
+    function showMoreYC() {
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myYCButton");
+
+    if (btnText.innerHTML == "View less") {
+      btnText.innerHTML = "View more";
+      moreText.style.display = "none";
+    } 
+    else {
+      btnText.innerHTML = "View less";
+      moreText.style.display = "inline";
+    }
+    }
+
+    function showMoreWSJ() {
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myWSJButton");
+
+    if (btnText.innerHTML == "View less") {
+      btnText.innerHTML = "View more";
+      moreText.style.display = "none";
+    } 
+    else {
+      btnText.innerHTML = "View less";
+      moreText.style.display = "inline";
+    }
+    }
     
   </script>
 </html> 

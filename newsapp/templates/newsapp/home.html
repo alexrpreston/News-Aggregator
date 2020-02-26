@@ -6,7 +6,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
-   
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
     <meta charset="utf-8"> 
     <title></title> 
     
@@ -76,7 +77,7 @@
               {{ value|linebreaks }} 
             {% endfor %} 
             </span>
-            <button onclick="showMoreTC()" id="myTCButton">View More</button>
+            <button onclick="showMoreTC()" class="moreButton" id="myTCButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
         <div class="column">
           <a href="https://www.wsj.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/wallStreetJournalLogo.png' %}">WALL STREET JOURNAL</a><br>
@@ -99,7 +100,7 @@
               {{ value|linebreaks }} 
             {% endfor %} 
             </span>
-            <button onclick="showMoreWSJ()" id="myWSJButton">View More</button>
+            <button onclick="showMoreWSJ()" class="moreButton" id="myWSJButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
         <div class="column">
           <a href="https://news.ycombinator.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="5%" src="{% static 'newsapp/hackerNewsLogo.jpg' %}">HACKER NEWS</a><br>
@@ -121,7 +122,7 @@
               {{ value|linebreaks }} 
             {% endfor %} 
             </span>
-            <button onclick="showMoreYC()" id="myYCButton">View More</button>
+            <button onclick="showMoreYC()" class="moreButton" id="myYCButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
     </div>
     <footer>
@@ -213,6 +214,7 @@
     } 
     else {
       btnText.innerHTML = "View less";
+      btnText.style = ""
       moreText.style.display = "inline";
     }
     }

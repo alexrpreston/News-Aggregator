@@ -3,7 +3,13 @@
   display: inline-block;
 }
 
-#more{
+#moreYC{
+  display: none;
+}
+#moreTC{
+  display: none;
+}
+#moreWSJ{
   display: none;
 }
 

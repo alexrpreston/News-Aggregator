@@ -32,3 +32,27 @@ class lastUpdated(models.Model):
     minutes = models.CharField(max_length=60)
     def __str__(self):
         return self.minutes
+
+class businessInsiderHeadline(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.TextField()
+    desc = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+class seekingAlphaHeadline(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.TextField()
+    desc = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+class wiredHeadline(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.TextField()
+    desc = models.TextField()
+
+    def __str__(self):
+        return self.title

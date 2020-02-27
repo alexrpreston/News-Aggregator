@@ -5,7 +5,12 @@ from django.http import HttpResponse
 from newsapp.models import techCrunchHeadline
 from newsapp.models import wallStreetJournalHeadline
 from newsapp.models import theVergeHeadline
+from newsapp.models import wiredHeadline
+from newsapp.models import seekingAlphaHeadline
+from newsapp.models import businessInsiderHeadline
 from newsapp.models import lastUpdated
+
+
 from datetime import timedelta
 import time, os
 #def home(request):
@@ -54,7 +59,7 @@ def baseScrape(request):
         new_headline.url = f['url']
         new_headline.save()
 
-    TVtop = newsapi.get_top_headlines(sources ='the-verge')
+    TVtop = newsapi.get_top_headlines(sources ='hacker-news')
 
     tvjl = TVtop['articles'] 
     desc =[] 
@@ -64,6 +69,54 @@ def baseScrape(request):
     for i in range(len(l)): 
         f = tvjl[i] 
         new_headline = theVergeHeadline()
+        new_headline.title = f['title']
+        new_headline.desc = f['description']
+        new_headline.url = f['url']
+        new_headline.save()
+
+    #Business Insider scraper
+    BItop = newsapi.get_top_headlines(sources ='business-insider')
+
+    tvjl = TVtop['articles'] 
+    desc =[] 
+    news =[] 
+    img =[] 
+  
+    for i in range(len(l)): 
+        f = tvjl[i] 
+        new_headline = businessInsiderHeadline()
+        new_headline.title = f['title']
+        new_headline.desc = f['description']
+        new_headline.url = f['url']
+        new_headline.save()
+
+    #Wired Scraper
+    Wtop = newsapi.get_top_headlines(sources ='wired')
+
+    tvjl = TVtop['articles'] 
+    desc =[] 
+    news =[] 
+    img =[] 
+  
+    for i in range(len(l)): 
+        f = tvjl[i] 
+        new_headline = wiredHeadline()
+        new_headline.title = f['title']
+        new_headline.desc = f['description']
+        new_headline.url = f['url']
+        new_headline.save()
+
+    #Seeking Alpha
+    TVtop = newsapi.get_top_headlines(sources ='the-verge')
+
+    tvjl = TVtop['articles'] 
+    desc =[] 
+    news =[] 
+    img =[] 
+  
+    for i in range(len(l)): 
+        f = tvjl[i] 
+        new_headline = seekingAlphaHeadline()
         new_headline.title = f['title']
         new_headline.desc = f['description']
         new_headline.url = f['url']
@@ -81,21 +134,36 @@ def baseScrape(request):
 
 
 def news_list(request):
+    #The first 5 headlines for each news site
     TCheadlinesShort = techCrunchHeadline.objects.all()[:5]
     WSJHeadLinesShort = wallStreetJournalHeadline.objects.all()[:5]
-    TVHeadlLinesShort = theVergeHeadline.objects.all()[:5]   
+    TVHeadlLinesShort = theVergeHeadline.objects.all()[:5] 
+    WiredheadlinesShort = wiredHeadline.objects.all()[:5]
+    SkAlphaHeadLinesShort = seekingAlphaHeadline.objects.all()[:5]
+    BIHeadlLinesShort = businessInsiderHeadline.objects.all()[:5]    
+
+    #The rest of the headlines for each news site
     TCheadlinesFull = techCrunchHeadline.objects.all()[5:]
     WSJHeadLinesFull = wallStreetJournalHeadline.objects.all()[5:]
     TVHeadlLinesFull = theVergeHeadline.objects.all()[5:]   
+    WiredheadlinesFull = techCrunchHeadline.objects.all()[5:]
+    SkAlphaHeadLinesFull = wallStreetJournalHeadline.objects.all()[5:]
+    BIHeadlLinesFull = theVergeHeadline.objects.all()[5:]  
     
     #timeOfUpdate = 10
     context = {
         'TCobject_listHalf': TCheadlinesShort,
         'WSJobject_listHalf' : WSJHeadLinesShort,
         'TVobject_listHalf' : TVHeadlLinesShort,
+        'Wiredobject_listHalf': WiredheadlinesShort,
+        'SAobject_listHalf' : SkAlphaHeadLinesShort,
+        'BIobject_listHalf' : BIHeadlLinesShort,
         'TCobject_listRest': TCheadlinesFull,
         'WSJobject_listRest' : WSJHeadLinesFull,
         'TVobject_listRest' : TVHeadlLinesFull,
+        'Wiredobject_listRest': WiredheadlinesFull,
+        'SAobject_listRest' : SkAlphaHeadLinesFull,
+        'BIobject_listRest' : BIHeadlLinesFull,
         
     }
     return render(request, "newsapp/home.html", context)

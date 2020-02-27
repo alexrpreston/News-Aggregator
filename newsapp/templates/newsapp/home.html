@@ -176,48 +176,48 @@
     setInterval(updateTime, 1000);
 
 
+    function changeMoreButton(moreText, btnText){
+      if (btnText.innerHTML == "VIEW LESS ↑") {
+        btnText.innerHTML = "VIEW MORE ↓";
+        btnText.style.color = "#1F45FC";
+        btnText.style.fontFamily = "'Alfa Slab One', regular";
+        btnText.style.marginTop = "-8px";
+        btnText.style.textShadow = "-1px 0 #FCD71E, 0 1px #FCD71E, 1px 0 #FCD71E, 0 -1px #FCD71E";
+        moreText.style.display = "none";
+      } 
+      else {
+        btnText.innerHTML = "VIEW LESS ↑";
+        btnText.style.color = "#1F45FC";
+        btnText.style.fontFamily = "'Alfa Slab One', regular";
+        btnText.style.marginTop = "-8px";
+        btnText.style.textShadow = "-1px 0 #FCD71E, 0 1px #FCD71E, 1px 0 #FCD71E, 0 -1px #FCD71E";
+        moreText.style.display = "inline";
+      }
+    }
+
     function showMoreTC() {
     var moreText = document.getElementById("moreTC");
     var btnText = document.getElementById("myTCButton");
 
-    if (btnText.innerHTML == "View less") {
-      btnText.innerHTML = "View more";
-      moreText.style.display = "none";
-    } 
-    else {
-      btnText.innerHTML = "View less";
-      moreText.style.display = "inline";
-    }
+      changeMoreButton(moreText, btnText);
     }
 
     function showMoreYC() {
     var moreText = document.getElementById("moreYC");
     var btnText = document.getElementById("myYCButton");
 
-    if (btnText.innerHTML == "View less") {
-      btnText.innerHTML = "View more";
-      moreText.style.display = "none";
-    } 
-    else {
-      btnText.innerHTML = "View less";
-      moreText.style.display = "inline";
-    }
+      changeMoreButton(moreText, btnText);
     }
 
     function showMoreWSJ() {
-    var moreText = document.getElementById("moreWSJ");
-    var btnText = document.getElementById("myWSJButton");
+      var moreText = document.getElementById("moreWSJ");
+      var btnText = document.getElementById("myWSJButton");
+      
+      changeMoreButton(moreText, btnText);
+        
+    }
 
-    if (btnText.innerHTML == "View less") {
-      btnText.innerHTML = "View more";
-      moreText.style.display = "none";
-    } 
-    else {
-      btnText.innerHTML = "View less";
-      btnText.style = ""
-      moreText.style.display = "inline";
-    }
-    }
+    
     
   </script>
 </html> 

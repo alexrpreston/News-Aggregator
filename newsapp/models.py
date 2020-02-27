@@ -4,7 +4,7 @@ from django.db import models
 class techCrunchHeadline(models.Model):
     title = models.CharField(max_length=200)
     url = models.TextField()
-    desc = models.TextField()
+    desc = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -12,7 +12,7 @@ class techCrunchHeadline(models.Model):
 class wallStreetJournalHeadline(models.Model):
     title = models.CharField(max_length=200)
     url = models.TextField()
-    desc = models.TextField()
+    desc = models.TextField(null=True, blank=True)
     
 
     def __str__(self):
@@ -21,12 +21,10 @@ class wallStreetJournalHeadline(models.Model):
 class theVergeHeadline(models.Model):
     title = models.CharField(max_length=200)
     url = models.TextField()
-    desc = models.TextField()
+    desc = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.title
-
-
 
 class lastUpdated(models.Model):
     minutes = models.CharField(max_length=60)
@@ -36,7 +34,7 @@ class lastUpdated(models.Model):
 class businessInsiderHeadline(models.Model):
     title = models.CharField(max_length=200)
     url = models.TextField()
-    desc = models.TextField()
+    desc = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -44,7 +42,7 @@ class businessInsiderHeadline(models.Model):
 class seekingAlphaHeadline(models.Model):
     title = models.CharField(max_length=200)
     url = models.TextField()
-    desc = models.TextField()
+    desc = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -52,7 +50,7 @@ class seekingAlphaHeadline(models.Model):
 class wiredHeadline(models.Model):
     title = models.CharField(max_length=200)
     url = models.TextField()
-    desc = models.TextField()
+    desc = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.title

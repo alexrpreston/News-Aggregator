@@ -148,7 +148,7 @@ def news_list(request):
     TVHeadlLinesFull = theVergeHeadline.objects.all()[5:]   
     WiredheadlinesFull = techCrunchHeadline.objects.all()[5:]
     SkAlphaHeadLinesFull = wallStreetJournalHeadline.objects.all()[5:]
-    BIHeadlLinesFull = theVergeHeadline.objects.all()[5:]  
+    BIHeadlLinesFull = businessInsiderHeadline.objects.all()[5:]  
     
     #timeOfUpdate = 10
     context = {

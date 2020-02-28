@@ -13,15 +13,28 @@
   display: none;
 }
 
+#moreWired{
+  display: none;
+}
+#moreBI{
+  display: none;
+}
+#moreSkAlpha{
+  display: none;
+}
+
 .moreButton{
   border: none;
   background-color: inherit;
   padding: 0px 0px;
   font-size: 16px;
   cursor: pointer;
-  display: inline-block;
-  
-  
+  display: inline-block;  
+}
+
+
+.secondRow{
+  padding-top: 2%;
 }
 
 .moreText{

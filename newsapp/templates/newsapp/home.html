@@ -80,6 +80,55 @@
             <button onclick="showMoreTC()" class="moreButton" id="myTCButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
         <div class="column">
+          <a href="https://www.wired.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/wiredLogo.jpeg' %}">WIRED</a><br>
+            {% for object in Wiredobject_listHalf %}
+                    <div class="tooltip">
+                      <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                      <span class="titleText">{{ object.desc }}</span>
+                    </div>
+                    <h1 class="lineBreaks"></h1>
+                    {{ value|linebreaks }} 
+            {% endfor %}
+            <span id="moreWired">
+              {% for object in Wiredobject_listRest %}
+              <div class="tooltip">
+                <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                <span class="titleText">{{ object.desc }}</span>
+              </div>
+              <h1 class="lineBreaks"></h1>
+              {{ value|linebreaks }} 
+            {% endfor %} 
+            </span>
+            <button onclick="showMoreWired()" class="moreButton" id="myWiredButton"><p class="moreText">VIEW MORE ↓</p></button>
+        </div>
+        <div class="column">
+          <a href="https://news.ycombinator.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="5%" src="{% static 'newsapp/hackerNewsLogo.jpg' %}">HACKER NEWS</a><br>
+          {% for TVobject in TVobject_listHalf %}
+                <div class="tooltip">
+                  <a class="titles" href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
+                  <span class="titleText">{{ TVobject.desc }}</span>
+                </div>
+                    <h1 class="lineBreaks"></h1>
+                    {{ value|linebreaks }} 
+            {% endfor %}
+            <span id="moreYC">
+              {% for object in TVobject_listRest %}
+              <div class="tooltip">
+                <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                <span class="titleText">{{ object.desc }}</span>
+              </div>
+              <h1 class="lineBreaks"></h1>
+              {{ value|linebreaks }} 
+            {% endfor %} 
+            </span>
+            <button onclick="showMoreYC()" class="moreButton" id="myYCButton"><p class="moreText">VIEW MORE ↓</p></button>
+        </div>
+  </div>
+
+
+  <div class="row secondRow">
+      
+        <div class="column">
           <a href="https://www.wsj.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/wallStreetJournalLogo.png' %}">WALL STREET JOURNAL</a><br>
           
           {% for wsjobject in WSJobject_listHalf %}
@@ -103,17 +152,18 @@
             <button onclick="showMoreWSJ()" class="moreButton" id="myWSJButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
         <div class="column">
-          <a href="https://news.ycombinator.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="5%" src="{% static 'newsapp/hackerNewsLogo.jpg' %}">HACKER NEWS</a><br>
-          {% for TVobject in TVobject_listHalf %}
+          <a href="https://seekingalpha.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/seekingAlphaLogo.png' %}">SEEKING ALPHA</a><br>
+          
+          {% for object in SAobject_listHalf %}
                 <div class="tooltip">
-                  <a class="titles" href={{ TVobject.url }} target=”_blank”>{{ TVobject.title }} </a>
-                  <span class="titleText">{{ TVobject.desc }}</span>
+                  <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                  <span class="titleText">{{ object.desc }}</span>
                 </div>
                     <h1 class="lineBreaks"></h1>
                     {{ value|linebreaks }} 
             {% endfor %}
-            <span id="moreYC">
-              {% for object in TVobject_listRest %}
+            <span id="moreSkAlpha">
+              {% for object in SAobject_listRest %}
               <div class="tooltip">
                 <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
                 <span class="titleText">{{ object.desc }}</span>
@@ -122,7 +172,29 @@
               {{ value|linebreaks }} 
             {% endfor %} 
             </span>
-            <button onclick="showMoreYC()" class="moreButton" id="myYCButton"><p class="moreText">VIEW MORE ↓</p></button>
+            <button onclick="showMoreSkAlpha()" class="moreButton" id="mySkAlphaButton"><p class="moreText">VIEW MORE ↓</p></button>
+        </div>
+        <div class="column">
+          <a href="https://www.businessinsider.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="5%" src="{% static 'newsapp/businessInsiderLogo.jpg' %}">BUSINESS INSIDER</a><br>
+          {% for object in BIobject_listHalf %}
+                <div class="tooltip">
+                  <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                  <span class="titleText">{{ object.desc }}</span>
+                </div>
+                    <h1 class="lineBreaks"></h1>
+                    {{ value|linebreaks }} 
+            {% endfor %}
+            <span id="moreBI">
+              {% for object in BIobject_listRest %}
+              <div class="tooltip">
+                <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
+                <span class="titleText">{{ object.desc }}</span>
+              </div>
+              <h1 class="lineBreaks"></h1>
+              {{ value|linebreaks }} 
+            {% endfor %} 
+            </span>
+            <button onclick="showMoreBI()" class="moreButton" id="myBIButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
   </div>
     <footer>
@@ -179,18 +251,12 @@
     function changeMoreButton(moreText, btnText){
       if (btnText.innerHTML == "VIEW LESS ↑") {
         btnText.innerHTML = "VIEW MORE ↓";
-        btnText.style.color = "#1F45FC";
-        btnText.style.fontFamily = "'Alfa Slab One', regular";
-        btnText.style.marginTop = "-8px";
-        btnText.style.textShadow = "-1px 0 #FCD71E, 0 1px #FCD71E, 1px 0 #FCD71E, 0 -1px #FCD71E";
+        btnText.classList.add('moreText');
         moreText.style.display = "none";
       } 
       else {
         btnText.innerHTML = "VIEW LESS ↑";
-        btnText.style.color = "#1F45FC";
-        btnText.style.fontFamily = "'Alfa Slab One', regular";
-        btnText.style.marginTop = "-8px";
-        btnText.style.textShadow = "-1px 0 #FCD71E, 0 1px #FCD71E, 1px 0 #FCD71E, 0 -1px #FCD71E";
+        btnText.classList.add('moreText');
         moreText.style.display = "inline";
       }
     }

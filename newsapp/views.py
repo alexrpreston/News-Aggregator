@@ -25,6 +25,9 @@ def baseScrape(request):
     techCrunchHeadline.objects.all().delete() 
     wallStreetJournalHeadline.objects.all().delete() 
     theVergeHeadline.objects.all().delete() 
+    seekingAlphaHeadline.objects.all().delete() 
+    businessInsiderHeadline.objects.all().delete() 
+    wiredHeadline.objects.all().delete() 
     
     lastUpdated.objects.all().delete()
     KEY = os.getenv('NEWS_API_KEY')
@@ -77,7 +80,7 @@ def baseScrape(request):
     #Business Insider scraper
     BItop = newsapi.get_top_headlines(sources ='business-insider')
 
-    tvjl = TVtop['articles'] 
+    tvjl = BItop['articles'] 
     desc =[] 
     news =[] 
     img =[] 
@@ -93,7 +96,7 @@ def baseScrape(request):
     #Wired Scraper
     Wtop = newsapi.get_top_headlines(sources ='wired')
 
-    tvjl = TVtop['articles'] 
+    tvjl = Wtop['articles'] 
     desc =[] 
     news =[] 
     img =[] 
@@ -146,8 +149,8 @@ def news_list(request):
     TCheadlinesFull = techCrunchHeadline.objects.all()[5:]
     WSJHeadLinesFull = wallStreetJournalHeadline.objects.all()[5:]
     TVHeadlLinesFull = theVergeHeadline.objects.all()[5:]   
-    WiredheadlinesFull = techCrunchHeadline.objects.all()[5:]
-    SkAlphaHeadLinesFull = wallStreetJournalHeadline.objects.all()[5:]
+    WiredheadlinesFull = wiredHeadline.objects.all()[5:]
+    SkAlphaHeadLinesFull = seekingAlphaHeadline.objects.all()[5:]
     BIHeadlLinesFull = businessInsiderHeadline.objects.all()[5:]  
     
     #timeOfUpdate = 10

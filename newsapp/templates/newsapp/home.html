@@ -3,7 +3,7 @@
 <!DOCTYPE html> 
 <html lang="en" dir="ltr"> 
   <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/css/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
@@ -18,21 +18,22 @@
 <!-- Optional theme -->
   </head> 
   <body>
+    <header class="header">
+      <h1 class="subjectLine">Finance + Technology News</h1> 
+      <h3 class="lastUpdated">Last updated 5 minutes ago</h3> 
+      <hr class="line">
+    </header>
     <div class="outer">
 
-    
+      
     <div class="inner">
 
     
     
-      <header>
-        <h1 class="subjectLine">Finance + Technology News</h1> 
-        <hr class="line">
-      </header>
+      
       
         <div class="test">
           <div class="headline header">
-            <h1 class="newsSubjects">Top Stories</h1>
           </div>
           <div>
             <div class="date header">
@@ -57,7 +58,7 @@
   
     <div class="row">
       
-        <div class="column">
+        <div class="column floatingBox">
           <a href="https://techcrunch.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/techCrunchLogo.png' %}">TECH CRUNCH</a><br>
             {% for object in TCobject_listHalf %}
                     <div class="tooltip">
@@ -79,7 +80,7 @@
             </span>
             <button onclick="showMoreTC()" class="moreButton" id="myTCButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
-        <div class="column">
+        <div class="column floatingBox">
           <a href="https://www.wired.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/wiredLogo.jpeg' %}">WIRED</a><br>
             {% for object in Wiredobject_listHalf %}
                     <div class="tooltip">
@@ -101,7 +102,7 @@
             </span>
             <button onclick="showMoreWired()" class="moreButton" id="myWiredButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
-        <div class="column">
+        <div class="column floatingBox">
           <a href="https://news.ycombinator.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="5%" src="{% static 'newsapp/hackerNewsLogo.jpg' %}">HACKER NEWS</a><br>
           {% for TVobject in TVobject_listHalf %}
                 <div class="tooltip">
@@ -128,7 +129,7 @@
 
   <div class="row secondRow">
       
-        <div class="column">
+        <div class="column floatingBox">
           <a href="https://www.wsj.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/wallStreetJournalLogo.png' %}">WALL STREET JOURNAL</a><br>
           
           {% for wsjobject in WSJobject_listHalf %}
@@ -151,7 +152,7 @@
             </span>
             <button onclick="showMoreWSJ()" class="moreButton" id="myWSJButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
-        <div class="column">
+        <div class="column floatingBox">
           <a href="https://seekingalpha.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/seekingAlphaLogo.png' %}">SEEKING ALPHA</a><br>
           
           {% for object in SAobject_listHalf %}
@@ -174,7 +175,7 @@
             </span>
             <button onclick="showMoreSkAlpha()" class="moreButton" id="mySkAlphaButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
-        <div class="column">
+        <div class="column floatingBox">
           <a href="https://www.businessinsider.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="5%" src="{% static 'newsapp/businessInsiderLogo.jpg' %}">BUSINESS INSIDER</a><br>
           {% for object in BIobject_listHalf %}
                 <div class="tooltip">
@@ -213,40 +214,6 @@
 
 
   <script type="text/javascript">
-    var updateTime = function () {
-      var d = new Date();
-      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      var daysOfWeek = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-      document.getElementById("dateHeader").innerHTML = daysOfWeek[d.getDay()]+", "+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
-      
-      var hours;
-      var timeConvention;
-      if(d.getHours() > 12){
-        hours = d.getHours() - 12
-        timeConvention = "PM";
-      }
-      else{
-        hours = d.getHours();
-        timeConvention = "AM";
-      } 
-
-      var minutes;
-      var seconds;
-      if(d.getMinutes() < 10)minutes = "0"+d.getMinutes();
-      else minutes = d.getMinutes();
-      if(d.getSeconds() < 10)seconds = "0"+d.getSeconds();
-      else seconds = d.getSeconds()
-      var zone = new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]
-      document.getElementById("dateTime").innerHTML = hours+":"+minutes+":"+seconds+" "+timeConvention+" "+zone;
-
-
-      
-
-    };
-  
-    updateTime();
-    setInterval(updateTime, 1000);
-
 
     function changeMoreButton(moreText, btnText){
       if (btnText.innerHTML == "VIEW LESS ↑") {

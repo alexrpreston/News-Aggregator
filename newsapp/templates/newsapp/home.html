@@ -1,37 +1,42 @@
 {% load static %}
 
-<!DOCTYPE html> 
-<html lang="en" dir="ltr"> 
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" type="text/css" href="{% static 'newsapp/css/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 
-    <meta charset="utf-8"> 
-    <title></title> 
-    
-    
-   
-  
-    
+    <meta charset="utf-8">
+    <title></title>
+
+
+
+
+
 <!-- Optional theme -->
-  </head> 
+  </head>
   <body>
-    
+
     <div class="outer">
 
-      
+
     <div class="inner">
 
       <header class="">
-        <h1 class="subjectLine">Finance + Technology News</h1> 
-        <h3 class="lastUpdated">Last updated 5 minutes ago</h3> 
+        <h1 class="subjectLine">Finance + Technology News</h1>
+
         <hr class="line">
+        <h3 class="lastUpdated">Last updated 5 minutes ago</h3>
+        <div class="date header">
+              <div id="dateHeader"></div>
+              <div id="dateTime"></div>
+        </div>
       </header>
-    
-      
-      
+
+
+
         <div class="test">
           <div class="headline header">
           </div>
@@ -41,23 +46,23 @@
               <div id="dateTime"></div>
             </div>
           </div>
-          
-        </div> 
+
+        </div>
         <div>
           {% block content %}
-            
+
           {% endblock %}
-        </div> 
-        
-      
-         
-          
+        </div>
+
+
+
+
                <a href="{% url 'baseScrape' %}" class="btn btn-success">update</a>
 
-     
-  
+
+
     <div class="row">
-      
+
         <div class="column floatingBox">
           <a href="https://techcrunch.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/techCrunchLogo.png' %}">TECH CRUNCH</a><br>
             {% for object in TCobject_listHalf %}
@@ -66,7 +71,7 @@
                       <span class="titleText">{{ object.desc }}</span>
                     </div>
                     <h1 class="lineBreaks"></h1>
-                    {{ value|linebreaks }} 
+                    {{ value|linebreaks }}
             {% endfor %}
             <span id="moreTC">
               {% for object in TCobject_listRest %}
@@ -75,8 +80,8 @@
                 <span class="titleText">{{ object.desc }}</span>
               </div>
               <h1 class="lineBreaks"></h1>
-              {{ value|linebreaks }} 
-            {% endfor %} 
+              {{ value|linebreaks }}
+            {% endfor %}
             </span>
             <button onclick="showMoreTC()" class="moreButton" id="myTCButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
@@ -88,7 +93,7 @@
                       <span class="titleText">{{ object.desc }}</span>
                     </div>
                     <h1 class="lineBreaks"></h1>
-                    {{ value|linebreaks }} 
+                    {{ value|linebreaks }}
             {% endfor %}
             <span id="moreWired">
               {% for object in Wiredobject_listRest %}
@@ -97,8 +102,8 @@
                 <span class="titleText">{{ object.desc }}</span>
               </div>
               <h1 class="lineBreaks"></h1>
-              {{ value|linebreaks }} 
-            {% endfor %} 
+              {{ value|linebreaks }}
+            {% endfor %}
             </span>
             <button onclick="showMoreWired()" class="moreButton" id="myWiredButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
@@ -110,7 +115,7 @@
                   <span class="titleText">{{ TVobject.desc }}</span>
                 </div>
                     <h1 class="lineBreaks"></h1>
-                    {{ value|linebreaks }} 
+                    {{ value|linebreaks }}
             {% endfor %}
             <span id="moreYC">
               {% for object in TVobject_listRest %}
@@ -119,8 +124,8 @@
                 <span class="titleText">{{ object.desc }}</span>
               </div>
               <h1 class="lineBreaks"></h1>
-              {{ value|linebreaks }} 
-            {% endfor %} 
+              {{ value|linebreaks }}
+            {% endfor %}
             </span>
             <button onclick="showMoreYC()" class="moreButton" id="myYCButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
@@ -128,17 +133,17 @@
 
 
   <div class="row secondRow">
-      
+
         <div class="column floatingBox">
           <a href="https://www.wsj.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/wallStreetJournalLogo.png' %}">WALL STREET JOURNAL</a><br>
-          
+
           {% for wsjobject in WSJobject_listHalf %}
                 <div class="tooltip">
                   <a class="titles" href={{ wsjobject.url }} target=”_blank”>{{ wsjobject.title }} </a>
                   <span class="titleText">{{ wsjobject.desc }}</span>
                 </div>
                     <h1 class="lineBreaks"></h1>
-                    {{ value|linebreaks }} 
+                    {{ value|linebreaks }}
             {% endfor %}
             <span id="moreWSJ">
               {% for object in WSJobject_listRest %}
@@ -147,21 +152,21 @@
                 <span class="titleText">{{ object.desc }}</span>
               </div>
               <h1 class="lineBreaks"></h1>
-              {{ value|linebreaks }} 
-            {% endfor %} 
+              {{ value|linebreaks }}
+            {% endfor %}
             </span>
             <button onclick="showMoreWSJ()" class="moreButton" id="myWSJButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
         <div class="column floatingBox">
           <a href="https://seekingalpha.com/" target="_blank" class="newsLogoText"><img class="newsLogo" width="7%" src="{% static 'newsapp/seekingAlphaLogo.png' %}">SEEKING ALPHA</a><br>
-          
+
           {% for object in SAobject_listHalf %}
                 <div class="tooltip">
                   <a class="titles" href={{ object.url }} target=”_blank”>{{ object.title }} </a>
                   <span class="titleText">{{ object.desc }}</span>
                 </div>
                     <h1 class="lineBreaks"></h1>
-                    {{ value|linebreaks }} 
+                    {{ value|linebreaks }}
             {% endfor %}
             <span id="moreSkAlpha">
               {% for object in SAobject_listRest %}
@@ -170,8 +175,8 @@
                 <span class="titleText">{{ object.desc }}</span>
               </div>
               <h1 class="lineBreaks"></h1>
-              {{ value|linebreaks }} 
-            {% endfor %} 
+              {{ value|linebreaks }}
+            {% endfor %}
             </span>
             <button onclick="showMoreSkAlpha()" class="moreButton" id="mySkAlphaButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
@@ -183,7 +188,7 @@
                   <span class="titleText">{{ object.desc }}</span>
                 </div>
                     <h1 class="lineBreaks"></h1>
-                    {{ value|linebreaks }} 
+                    {{ value|linebreaks }}
             {% endfor %}
             <span id="moreBI">
               {% for object in BIobject_listRest %}
@@ -192,8 +197,8 @@
                 <span class="titleText">{{ object.desc }}</span>
               </div>
               <h1 class="lineBreaks"></h1>
-              {{ value|linebreaks }} 
-            {% endfor %} 
+              {{ value|linebreaks }}
+            {% endfor %}
             </span>
             <button onclick="showMoreBI()" class="moreButton" id="myBIButton"><p class="moreText">VIEW MORE ↓</p></button>
         </div>
@@ -209,18 +214,54 @@
 </div>
 </div>
 
-  
-  </body> 
+
+  </body>
 
 
   <script type="text/javascript">
+
+    var updateTime = function () {
+      var d = new Date();
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      var daysOfWeek = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      document.getElementById("dateHeader").innerHTML = daysOfWeek[d.getDay()]+", "+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
+
+      var hours;
+      var timeConvention;
+      if(d.getHours() > 12){
+        hours = d.getHours() - 12
+        timeConvention = "PM";
+      }
+      else{
+        hours = d.getHours();
+        timeConvention = "AM";
+      }
+
+      var minutes;
+      var seconds;
+      if(d.getMinutes() < 10)minutes = "0"+d.getMinutes();
+      else minutes = d.getMinutes();
+      if(d.getSeconds() < 10)seconds = "0"+d.getSeconds();
+      else seconds = d.getSeconds()
+      var zone = new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]
+      document.getElementById("dateTime").innerHTML = hours+":"+minutes+":"+seconds+" "+timeConvention+" "+zone;
+
+
+
+
+    };
+
+    updateTime();
+    setInterval(updateTime, 1000);
+
+
 
     function changeMoreButton(moreText, btnText){
       if (btnText.innerHTML == "VIEW LESS ↑") {
         btnText.innerHTML = "VIEW MORE ↓";
         btnText.classList.add('moreText');
         moreText.style.display = "none";
-      } 
+      }
       else {
         btnText.innerHTML = "VIEW LESS ↑";
         btnText.classList.add('moreText');
@@ -266,12 +307,12 @@
     function showMoreWSJ() {
       var moreText = document.getElementById("moreWSJ");
       var btnText = document.getElementById("myWSJButton");
-      
+
       changeMoreButton(moreText, btnText);
-        
+
     }
 
-    
-    
+
+
   </script>
-</html> 
+</html>

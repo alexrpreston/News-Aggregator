@@ -9,6 +9,8 @@ from newsapp.models import wiredHeadline
 from newsapp.models import seekingAlphaHeadline
 from newsapp.models import businessInsiderHeadline
 from newsapp.models import lastUpdated
+import schedule
+import time
 
 
 from datetime import timedelta
@@ -189,3 +191,7 @@ def timeSince(request):
         'minutes_since_update' : minutesSinceUpdate 
     }
     return render(request, "newsapp/lastUpdated.html", context)
+
+
+
+

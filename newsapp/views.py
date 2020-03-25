@@ -130,13 +130,13 @@ def baseScrape():
     time.tzset()
     t = time.localtime()
 
-    timeFile = open("/home/alexrpreston/alexrpreston.pythonanywhere.com/timeHolder.txt","w+")
+    timeFile = open("timeHolder.txt","w+")
     timeFile.write(time.strftime("%M" , t))
     print("Minutes of Last update to write to Txt File: ",time.strftime("%M" , t))
     timeFile.close()
 
 
-    timeFile = open("/home/alexrpreston/alexrpreston.pythonanywhere.com/timeHolder.txt","r")
+    timeFile = open("timeHolder.txt","r")
     oldTime = timeFile.read()
     print("Minutes of Last update from Txt File: ",oldTime)
     timeFile.close()
@@ -149,7 +149,7 @@ def news_list(request):
     time.tzset()
     t = time.localtime()
 
-    timeFile = open("/home/alexrpreston/alexrpreston.pythonanywhere.com/timeHolder.txt","r")
+    timeFile = open("timeHolder.txt","r")
     oldTime = timeFile.read()
     timedifference = int(time.strftime("%M" , t)) - int(oldTime)
     if timedifference < 0:

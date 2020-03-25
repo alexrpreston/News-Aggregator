@@ -13,7 +13,7 @@ class wallStreetJournalHeadline(models.Model):
     title = models.CharField(max_length=200)
     url = models.TextField()
     desc = models.TextField(null=True, blank=True)
-    
+
 
     def __str__(self):
         return self.title
@@ -27,9 +27,9 @@ class theVergeHeadline(models.Model):
         return self.title
 
 class lastUpdated(models.Model):
-    minutes = models.CharField(max_length=60)
+    minutes = models.IntegerField()
     def __str__(self):
-        return self.minutes
+        return int(self.minutes)
 
 class businessInsiderHeadline(models.Model):
     title = models.CharField(max_length=200)

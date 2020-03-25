@@ -4,26 +4,27 @@
 }
 
 .lastUpdated{
+  margin-top: 0.5%;
   padding-left: 5%;
   float:left;
 }
 
 .dateHeader{
-  margin-right : 30%; 
+  padding-right : 30%;
   float:left;
 }
 
 #dateTime{
   position: relative;
-  left: 2.5%;
+  left: 3.5%;
 }
 
 .date{
   position: relative;
-  left: 57%;
+  left: 52%;
   vertical-align: middle;
-  margin-right: 55%;
-  
+  padding-right: 55%;
+
 }
 
 #moreYC{
@@ -52,7 +53,7 @@
   padding: 0px 0px;
   font-size: 16px;
   cursor: pointer;
-  display: inline-block;  
+  display: inline-block;
 }
 
 
@@ -69,7 +70,7 @@
 }
 
 .moreText:hover{
-  
+
   font-family: 'Squada One', cursive;
   font-size: 130%;
   color: #FCD71E;
@@ -102,7 +103,7 @@
 
 .tooltip:hover .titleText{
   visibility: visible;
-  opacity: 1; 
+  opacity: 1;
 }
 
 .row{
@@ -117,7 +118,7 @@
 }
 
 .updateText{
-  
+
   font-size: 80%;
 }
 
@@ -146,6 +147,7 @@
 }
 
 .footerInfo{
+  font-size: 130%;
   padding-left: 5%;
   padding-bottom: 2%;
 }
@@ -203,7 +205,7 @@ a{
   box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
   background-color: #FFFFFF;
   margin: 0% 15% 15% 15%;
-  
+
   background-color: white;
   border-style: solid;
   border-width: .03em;
@@ -211,11 +213,14 @@ a{
   border-radius: 5px;
 }
 
+
+
+
 .aboutInner{
   box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
-  background-color: blue;
-  margin: 0% 15% 100px 15%;
-  
+  background-color: #FFFFFF;
+  margin: 0% 15% 15% 15%;
+
   background-color: white;
   border-style: solid;
   border-width: .03em;
@@ -227,24 +232,259 @@ body{
   background-color: #F2F2F2;
 }
 
-@media only screen and (max-device-width: 480px) {
-  .column{
-    width: 98%;
-    padding-right: 2%;
-    padding-left: 2%;
-    vertical-align: top;
-    display: inline-block;
-  }
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3) {
 
-  .inner{
-    box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
-    background-color: #FFFFFF;
-    margin: 0% 40% 15% 40%;
-    
-    background-color: white;
-    border-style: solid;
-    border-width: .03em;
-    border-color: #E9E9E9;
-    border-radius: 5px;
-  }
+
+      .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .lastUpdated{
+      padding-left: 5%;
+      float:left;
+    }
+
+    .dateHeader{
+      margin-right : 30%;
+      float:left;
+    }
+
+    #dateTime{
+      visibility: hidden;
+    }
+
+    .date{
+      visibility: hidden;
+
+    }
+
+    #moreYC{
+      display: none;
+    }
+    #moreTC{
+      display: none;
+    }
+    #moreWSJ{
+      display: none;
+    }
+
+    #moreWired{
+      display: none;
+    }
+    #moreBI{
+      display: none;
+    }
+    #moreSkAlpha{
+      display: none;
+    }
+
+    .moreButton{
+      border: none;
+      background-color: inherit;
+      padding: 0px 0px;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+
+    .secondRow{
+      padding-top: 2%;
+    }
+
+    .moreText{
+      margin-top: -8px;
+      font-family: 'Squada One', cursive;
+      font-size: 270%;
+      color: #1F45FC;
+      text-shadow: -2.3% 0 #FCD71E, 0 2.3% #FCD71E, 2.3% 0 #FCD71E, 0 -2.3% #FCD71E;
+    }
+
+    .moreText:hover{
+
+      font-family: 'Squada One', cursive;
+      font-size: 270%;
+      color: #FCD71E;
+      text-shadow: -2.3% 0 #1F45FC, 0 2.3% #1F45FC, 2.3% 0 #1F45FC, 0 -2.3% #1F45FC;
+    }
+
+    .tooltip .titleText{
+      visibility: hidden;
+      width: 80%;
+      background-color: #FFFAEE;
+      color: #696969;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 3px;
+      border-color: #fff5cc;
+      border-style: solid;
+      border-width: 0.5px;
+
+      position: absolute;
+      z-index: 1;
+      top: 125%;
+      left: 50%;
+      margin-left: -120px;
+
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+
+
+    .tooltip:hover .titleText{
+      visibility: hidden;
+      opacity: 1;
+    }
+
+    .row{
+    }
+
+    .header{
+      display: inline;
+    }
+
+    .headline{
+      display: flex;
+    }
+
+    .updateText{
+
+      font-size: 80%;
+    }
+
+    .test{
+      columns: 2;
+    }
+
+
+
+    .subjectLine{
+      font-family: 'Squada One', cursive;
+      padding-left: 1.5%;
+    }
+
+    .newsSubjects{
+      font-family: 'Odibee Sans', cursive;
+      padding-left: 3%;
+      vertical-align: middle;
+      text-align: left;
+    }
+
+    .line{
+      margin-top: 5%;
+      border-top: 1px solid #EEEEEE;
+      width: 90%;
+    }
+
+    .footerInfo{
+      font-size: 250%;
+      padding-left: 5%;
+      padding-bottom: 2%;
+    }
+
+    @font-face {
+      font-family: coolvetica;
+      src: url(coolvetica\ rg.ttf);
+    }
+
+    @font-face {
+      font-family: lemonMilk;
+      src: url(LEMONMILK-Medium.otf);
+    }
+
+    .newsLogoText{
+      font-family: lemonMilk;
+      font-size: 300%;
+      color: #2C86C5;
+    }
+
+
+    a.titles{
+      font-family: coolvetica;
+      font-size: 230%;
+      font-weight: lighter;
+      color: #696969;
+    }
+
+    img{
+      align:right;
+    }
+    .newsLogo{
+      padding: 1%;
+      vertical-align: middle;
+    }
+
+    .lineBreaks{
+      border-bottom-style: dashed;
+      border-width: 1px;
+      border-color: grey;
+    }
+    .column{
+      width: 96%;
+      padding-right: 2%;
+      padding-left: 2%;
+      vertical-align: top;
+      display: inline-block;
+    }
+
+    a{
+      text-decoration: none
+    }
+
+    .inner{
+        margin: auto;
+    }
+
+    .aboutInner{
+      margin: auto;
+    }
+
+    .subjectLine{
+        font-size: 470%;
+    }
+
+    .lastUpdated{
+        visibility: hidden;
+    }
+
+
+    body{
+      box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+      background-color: #FFFFFF;
+      box-sizing: border-box;
+      width: 100%;
+      margin: auto;
+
+      background-color: white;
+      border-style: solid;
+      border-width: .03em;
+      border-color: #E9E9E9;
+      border-radius: 5px;
+
+
+    }
+
+    .emptySpace{
+    height: 1200px;
+    }
+
+    html,body
+{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
 }
+}
+
+.headerLink{
+    color: black;
+}
+
+
+

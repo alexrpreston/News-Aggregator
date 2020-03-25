@@ -1,62 +1,65 @@
 {% load static %}
 
-<!DOCTYPE html> 
-<html lang="en" dir="ltr"> 
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'newsapp/css/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
-   
-    <meta charset="utf-8"> 
-    <title></title> 
-    
-    
-   
-  
-    
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <title></title>
+
+
+
+
+
 <!-- Optional theme -->
-  </head> 
+  </head>
   <body>
-    
+
     <div class="outer">
 
-    
-        <div class="inner">
-            <header>
-                <h1 class="subjectLine">Finance + Technology News</h1> 
-                <hr class="line">
-              </header>
-              
-                <div class="test">
-                  <div class="headline header">
-                    <h1 class="newsSubjects">Top Stories</h1>
-                  </div>
-                  <div>
-                    <div class="date header">
-                      <div id="dateHeader"></div>
-                      <div id="dateTime"></div>
-                    </div>
-                  </div>
-                  
-                </div> 
 
-        <p>Created by Alex Preston in 2020. A one page view of finance and technology news scraped every few minutes. 
-            Inspired by Popurls. 
+    <div class="aboutInner">
+
+      <header class="">
+        <a class="headerLink" href="http://alexrpreston.pythonanywhere.com/newsapp/"><h1 class="subjectLine">Finance + Technology News</h1></a>
+
+        <hr class="line">
+      </header>
+
+
+        <p style="text-align: center; font-size: 130%">Created by Alex Preston in 2020. A one page view of finance and technology news upated every hour.
+            <br>Inspired by Thomas Marban of <a href="http://new.popurls.com/">Popurls</a>.
             `</p>
-        </div>
-    </div>
 
-  
-  </body> 
+        <div class="emptySpace"></div>
+
+
+            <footer>
+              <hr class="line">
+              <div class="footerInfo">
+                <a href="http://alexrpreston.pythonanywhere.com/newsapp/" target="_self">Home</a> <a href="https://github.com/alexrpreston/News-Aggregator" target="_blank">Github</a>
+              </div>
+            </footer>
+        </div>
+
+</div>
+
+
+  </body>
 
 
   <script type="text/javascript">
+
     var updateTime = function () {
       var d = new Date();
       var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       var daysOfWeek = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
       document.getElementById("dateHeader").innerHTML = daysOfWeek[d.getDay()]+", "+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
-      
+
       var hours;
       var timeConvention;
       if(d.getHours() > 12){
@@ -66,7 +69,7 @@
       else{
         hours = d.getHours();
         timeConvention = "AM";
-      } 
+      }
 
       var minutes;
       var seconds;
@@ -78,14 +81,12 @@
       document.getElementById("dateTime").innerHTML = hours+":"+minutes+":"+seconds+" "+timeConvention+" "+zone;
 
 
-      
+
 
     };
-  
+
     updateTime();
     setInterval(updateTime, 1000);
 
-    
   </script>
-  
-</html> 
+</html>

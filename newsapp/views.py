@@ -13,10 +13,6 @@ from newsapp.models import lastUpdated
 
 from datetime import timedelta
 import time, os
-#def home(request):
-#   return HttpResponse("Hello, world. You're at the polls index.")
-
-# Create your views here.
 
 def about(request):
     return render(request, "newsapp/about.html")
@@ -130,12 +126,9 @@ def baseScrape():
 
 
 
-
-    #newTime = lastUpdated()
     os.environ['UTC'] = 'US/Eastern'
     time.tzset()
     t = time.localtime()
-    #newTime.minutes = int(time.strftime("%M" , t))
 
     timeFile = open("/home/alexrpreston/alexrpreston.pythonanywhere.com/timeHolder.txt","w+")
     timeFile.write(time.strftime("%M" , t))
@@ -147,13 +140,6 @@ def baseScrape():
     oldTime = timeFile.read()
     print("Minutes of Last update from Txt File: ",oldTime)
     timeFile.close()
-
-    #print(int(time.strftime("%M" , t)))
-    #newTime.save()
-
-    #timeOfUpdate = lastUpdated.objects.all()[0]
-    #print(timeOfUpdate)
-    #return redirect("../")
 
 
 def news_list(request):
@@ -209,22 +195,3 @@ def news_list(request):
 
     }
     return render(request, "newsapp/home.html", context)
-
-def timeSince(request):
-    minutes = 10
-
-    os.environ['UTC'] = 'US/Eastern'
-    time.tzset()
-    t = time.localtime()
-    currentMinutes = int(time.strftime("%M" , t))
-
-    minutesSinceUpdate = 0
-    if minutes > currentMinutes:
-        minutesSinceUpdate = (60 - minutes) + currentMinutes
-    else:
-        minutesSinceUpdate = currentMinutes - minutes
-
-    context = {
-        'minutes_since_update' : minutesSinceUpdate
-    }
-    return render(request, "newsapp/lastUpdated.html", context)

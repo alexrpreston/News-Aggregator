@@ -19,6 +19,10 @@
   left: 3.5%;
 }
 
+.emptySpace{
+    height: 700px;
+    }
+
 .date{
   position: relative;
   left: 52%;

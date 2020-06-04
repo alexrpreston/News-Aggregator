@@ -13,6 +13,10 @@ from newsapp.models import lastUpdated
 
 from datetime import timedelta
 import time, os
+#def home(request):
+#   return HttpResponse("Hello, world. You're at the polls index.")
+
+# Create your views here.
 
 def about(request):
     return render(request, "newsapp/about.html")
@@ -27,8 +31,7 @@ def baseScrape():
     wiredHeadline.objects.all().delete()
 
 
-    KEY = os.getenv('NEWS_API_KEY')
-    newsapi = NewsApiClient(api_key = KEY) 
+    newsapi = NewsApiClient(api_key = "7890f99f817b40a0a587325193ca0933")
     top = newsapi.get_top_headlines(sources ='techcrunch')
 
     tcl = top['articles']
@@ -106,16 +109,16 @@ def baseScrape():
         new_headline.url = f['url']
         new_headline.save()
 
-    #CNBC Articles
-    CNBCtop = newsapi.get_top_headlines(sources ='cnbc')
+    #bloomberg Articles
+    bloombergtop = newsapi.get_top_headlines(sources ='bloomberg')
 
-    cnbcl = CNBCtop['articles']
+    bloombergl = bloombergtop['articles']
     desc =[]
     news =[]
     img =[]
 
-    for i in range(len(cnbcl)):
-        f = cnbcl[i]
+    for i in range(len(bloombergl)):
+        f = bloombergl[i]
         new_headline = seekingAlphaHeadline()
         new_headline.title = f['title']
         new_headline.desc = f['description']
@@ -126,20 +129,30 @@ def baseScrape():
 
 
 
+
+    #newTime = lastUpdated()
     os.environ['UTC'] = 'US/Eastern'
     time.tzset()
     t = time.localtime()
+    #newTime.minutes = int(time.strftime("%M" , t))
 
-    timeFile = open("timeHolder.txt","w+")
+    timeFile = open("/home/alexrpreston/alexrpreston.pythonanywhere.com/timeHolder.txt","w+")
     timeFile.write(time.strftime("%M" , t))
     print("Minutes of Last update to write to Txt File: ",time.strftime("%M" , t))
     timeFile.close()
 
 
-    timeFile = open("timeHolder.txt","r")
+    timeFile = open("/home/alexrpreston/alexrpreston.pythonanywhere.com/timeHolder.txt","r")
     oldTime = timeFile.read()
     print("Minutes of Last update from Txt File: ",oldTime)
     timeFile.close()
+
+    #print(int(time.strftime("%M" , t)))
+    #newTime.save()
+
+    #timeOfUpdate = lastUpdated.objects.all()[0]
+    #print(timeOfUpdate)
+    #return redirect("../")
 
 
 def news_list(request):
@@ -149,7 +162,7 @@ def news_list(request):
     time.tzset()
     t = time.localtime()
 
-    timeFile = open("timeHolder.txt","r")
+    timeFile = open("/home/alexrpreston/alexrpreston.pythonanywhere.com/timeHolder.txt","r")
     oldTime = timeFile.read()
     timedifference = int(time.strftime("%M" , t)) - int(oldTime)
     if timedifference < 0:
@@ -195,3 +208,22 @@ def news_list(request):
 
     }
     return render(request, "newsapp/home.html", context)
+
+def timeSince(request):
+    minutes = 10
+
+    os.environ['UTC'] = 'US/Eastern'
+    time.tzset()
+    t = time.localtime()
+    currentMinutes = int(time.strftime("%M" , t))
+
+    minutesSinceUpdate = 0
+    if minutes > currentMinutes:
+        minutesSinceUpdate = (60 - minutes) + currentMinutes
+    else:
+        minutesSinceUpdate = currentMinutes - minutes
+
+    context = {
+        'minutes_since_update' : minutesSinceUpdate
+    }
+    return render(request, "newsapp/lastUpdated.html", context)

@@ -31,7 +31,8 @@ def baseScrape():
     wiredHeadline.objects.all().delete()
 
 
-    newsapi = NewsApiClient(api_key = "7890f99f817b40a0a587325193ca0933")
+    KEY = os.getenv('NEWS_API_KEY')
+    newsapi = NewsApiClient(api_key = KEY)
     top = newsapi.get_top_headlines(sources ='techcrunch')
 
     tcl = top['articles']

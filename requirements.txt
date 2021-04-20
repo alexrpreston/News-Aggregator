@@ -152,7 +152,7 @@ protobuf==3.11.2
 psutil==5.4.8
 psycopg2-binary==2.7.6.1
 ptyprocess==0.6.0
-py==1.7.0
+py==1.10.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycodestyle==2.4.0

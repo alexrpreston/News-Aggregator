@@ -25,7 +25,7 @@ bokeh==1.0.2
 boto==2.49.0
 Bottleneck==1.2.1
 cachetools==4.0.0
-celery==4.4.0
+celery==5.2.2
 certifi==2018.11.29
 cffi==1.11.5
 chardet==3.0.4
